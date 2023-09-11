@@ -10,6 +10,10 @@ import "./App.css";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { RegistrationPage } from "./pages/RegistrationPage";
 import { LoginPage } from "./pages/LoginPage";
+import { WatchedPage } from "./pages/WatchedPage";
+import { WatchListPage } from "./pages/WatchListPage";
+import { TopSeriesPage } from "./pages/TopSeriesPage";
+import { TopFilmsPage } from "./pages/TopFilmsPage";
 
 
 
@@ -30,6 +34,18 @@ function App(){
               <Button component={Link} to="/">
                 Главная
               </Button>
+              <Button component={Link} to="/topfilms">
+                Фильмы
+              </Button>
+              <Button component={Link} to="/topseries">
+                Сериалы
+              </Button>
+              <Button component={Link} to="/watched">
+                Просмотрено
+              </Button>
+              <Button component={Link} to="/watchlist">
+                Хочу посмотреть
+              </Button>
               <Button component={Link} to="/login">
                 Вход
               </Button>
@@ -43,6 +59,10 @@ function App(){
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/watched" element={<WatchedPage />} />
+          <Route path="/watchlist" element={<WatchListPage />} />
+          <Route path="/topfilms" element={<TopFilmsPage />} />
+          <Route path="/topseries" element={<TopSeriesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
