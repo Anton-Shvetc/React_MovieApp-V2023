@@ -2,10 +2,24 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { MovieCard } from "./MovieCard";
 
+
+interface filmsDataI {
+  imdbId: string;
+  kinopoiskId: number;
+  nameEn: string | null;
+  nameOriginal: string;
+  nameRu: string;
+  posterUrl: string;
+  posterUrlPreview: string;
+  ratingImdb: number;
+  ratingKinopoisk: number;
+  year: number;
+}
+
 export const TopFilmsPage = () => {
   const api_key = process.env.REACT_APP_API_KEY;
 
-  const [filmsData, setFilmData] = useState<any>();
+  const [filmsData, setFilmData] = useState<filmsDataI[]>([]);
 
   async function fetchData() {
     try {
@@ -25,7 +39,7 @@ export const TopFilmsPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-console.log(api_key);
+  console.log(filmsData)
   return (
     <div className="movie-page">
       <div className="container">
@@ -35,7 +49,7 @@ console.log(api_key);
         <div></div>
         <div className="movie-grid">
           {filmsData &&
-            filmsData.map((filmItem : any) => {
+            filmsData.map((filmItem : filmsDataI) => {
               return (
                 <MovieCard
                   key={filmItem.kinopoiskId}
