@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import { BrowserRouter, Route, Routes, Link} from "react-router-dom";
 import "./App.css";
- import {HomePage} from "./pages/HomePage";
+import {HomePage} from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { RegistrationPage } from "./pages/RegistrationPage";
 import { LoginPage } from "./pages/LoginPage";

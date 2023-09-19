@@ -54,9 +54,7 @@ export const TopFilmsPage = () => {
                 <MovieCard
                   key={filmItem.kinopoiskId}
                   {...filmItem}
-                  // key={items.id}
-                  // type="topseries"
-                  // name={items.name}
+                  type="topfilms"
                 />
               );
             })}

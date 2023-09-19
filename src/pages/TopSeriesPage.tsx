@@ -1,3 +1,3 @@
 export const TopSeriesPage = () => {
-  return <>TopSeriesPage</>;
+  return <>TopSeriesPage - Страница в разработке</>;
 };
