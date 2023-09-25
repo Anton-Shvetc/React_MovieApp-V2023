@@ -1,3 +1,8 @@
+import Login from "../components/Login/Login";
+
+
 export const LoginPage = () => {
-  return <> Login - страница в разработке</>;
+  return (
+    <><Login/></>
+  )
 };
