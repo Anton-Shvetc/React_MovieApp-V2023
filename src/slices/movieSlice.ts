@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface Movie {
   id: number;
   type: string;
+  movieInfo: any
 }
 
 interface InitialState {

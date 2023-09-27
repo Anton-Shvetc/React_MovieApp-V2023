@@ -10,14 +10,20 @@ import {
   Container,
   Button,
   Typography,
-  Box
+  Box,
 } from "@mui/material";
+
+interface Movie {
+  id: number;
+  type: string;
+  movieInfo: any;
+}
 
 export const WatchListPage = () => {
   const currentState = store.getState();
 
   const watchlist = useSelector((state: any) => state.movie.watchlist);
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     const localStorageWatchlist = localStorage.getItem("watchlist");
@@ -28,8 +34,6 @@ export const WatchListPage = () => {
     }
   }, [watchlist]);
 
-  console.log(movies);
-
   return (
     <Container>
       {movies.length === 0 ? (
@@ -37,14 +41,14 @@ export const WatchListPage = () => {
           <Typography> Нет фильмов в списке</Typography>
         </Box>
       ) : (
-        //  <Grid container spacing={2}>
-        //    {movies.map((movie) => (
-        //      <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
-        //        <MovieCard movie={movie} />
-        //      </Grid>
-        //    ))}
-        //  </Grid>
-        <Grid> Данные есть </Grid>
+        <Grid container spacing={2}>
+          {movies.map((movie) => (
+            <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
+              <MovieCard key={movie.id} {...movie.movieInfo} type="watchlist" />
+            </Grid>
+          ))}
+        </Grid>
+        // <Grid> Данные есть </Grid>
       )}
     </Container>
   );

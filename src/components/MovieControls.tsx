@@ -1,7 +1,8 @@
-// import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { addMovieToWatched, addMovieToWatchlist } from "../slices/movieSlice";
 // import useAuth from "../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 // import { addMovie } from "./path/to/movieSlice";
 
@@ -20,10 +21,42 @@ export const MovieControls = ({
 }) => {
   // const auth = useAuth();
   const dispatch = useDispatch();
+  const api_key = process.env.REACT_APP_API_KEY;
 
-const handleAddMovie = (id: number, type: string) => {
-  dispatch(addMovieToWatchlist({ id: id, type: type }));
-};
+  const [filmData, setFilmData] = useState([]);
+
+  async function fetchData(id: number) {
+    try {
+      const response = await axios.get(
+        `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
+        {
+          headers: {
+            "X-API-KEY": api_key,
+          },
+        }
+      );
+
+      console.log(response.data);
+      dispatch(
+        addMovieToWatchlist({
+          id: response.data.kinopoiskId,
+          type: type,
+          movieInfo: response.data,
+        })
+      );
+    
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleAddMovie = (id: number, type: string) => {
+    fetchData(id);
+    // console.log(filmData);
+    // dispatch(addMovieToWatchlist({ id: id, type: type }));
+  };
+
+
 
   return (
     <div className="inner-card-controls">
