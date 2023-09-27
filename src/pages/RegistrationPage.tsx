@@ -1,3 +1,5 @@
+import Registration from "../components/Registration/Registration";
+
 export const RegistrationPage = () => {
-  return <> Registration - страница в разработке</>;
+  return <><Registration/> </>;
 };
