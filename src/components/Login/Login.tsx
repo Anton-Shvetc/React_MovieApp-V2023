@@ -24,7 +24,7 @@ function Login() {
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
     try {
-      console.log(data);
+      // console.log(data);
       //   setIsLoading(true);
       //   const { data: loginData } = await api.auth.login(data);
       //   auth.setToken(loginData.token);

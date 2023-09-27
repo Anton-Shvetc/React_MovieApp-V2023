@@ -10,7 +10,6 @@ interface Movie {
 interface InitialState {
   watchlist: Movie[];
   watched: Movie[];
-
 }
 
 

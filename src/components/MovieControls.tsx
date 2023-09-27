@@ -36,7 +36,7 @@ export const MovieControls = ({
         }
       );
 
-      console.log(response.data);
+      // console.log(response.data);
       dispatch(
         addMovieToWatchlist({
           id: response.data.kinopoiskId,

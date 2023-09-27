@@ -22,7 +22,7 @@ function Registration() {
   });
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
+    // console.log(data);
     // try {
     //   setIsLoading(true);
     //   await api.auth.registration(data);
