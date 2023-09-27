@@ -1,3 +1,3 @@
 export const WatchedPage = () => {
-	return <>WatchedPage - страница в разработке</>;
-}
+  return <>WatchedPage - страница в разработке</>;
+};

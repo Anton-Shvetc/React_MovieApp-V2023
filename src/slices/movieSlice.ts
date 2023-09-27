@@ -3,13 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Movie {
   id: number;
-  title: string;
+  type: string;
 }
 
 interface InitialState {
   watchlist: Movie[];
   watched: Movie[];
-  watched2: Movie[];
+
 }
 
 
@@ -20,19 +20,32 @@ const initialState: InitialState = {
   watched: localStorage.getItem("watched")
     ? JSON.parse(localStorage.getItem("watched") || "")
     : [],
-  watched2: localStorage.getItem("watched2")
-    ? JSON.parse(localStorage.getItem("watched2") || "")
-    : [],
 };
 
 const movieSlice = createSlice({
   name: "movie",
   initialState,
   reducers: {
+    
     addMovieToWatchlist: (state, action: PayloadAction<Movie>) => {
+      const isOnWatchlist = state.watchlist.some(
+        (movie) => movie.id === action.payload.id
+      );
+      const isWatched = state.watched.some(
+        (movie) => movie.id === action.payload.id
+      );
+
+        if (isOnWatchlist || isWatched) {
+          alert("The movie is already on your watchlist or has been watched.");
+          return;
+        }
       state.watchlist = [action.payload, ...state.watchlist];
+      localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
     },
-    removeMovieFromWatchlist: () => {},
+    removeMovieFromWatchlist: (state, action: PayloadAction<Movie>) => {
+        state.watchlist = state.watchlist.filter((movie) => movie.id !== action.payload.id);
+        localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
+    },
 
     addMovieToWatched: () => {},
     removeFromWatched: () => {},

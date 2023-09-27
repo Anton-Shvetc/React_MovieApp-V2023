@@ -1,7 +1,9 @@
 // import React, { useContext } from "react";
-// import { GlobalContext } from "../GlobalContext/GlobalState";
+import { addMovieToWatched, addMovieToWatchlist } from "../slices/movieSlice";
 // import useAuth from "../hooks/useAuth";
-  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from "react-redux";
+// import { addMovie } from "./path/to/movieSlice";
 
 import { AiOutlineEye } from "react-icons/ai";
 import { TbEyePlus } from "react-icons/tb";
@@ -9,24 +11,25 @@ import { BsTrash } from "react-icons/bs";
 
 // import {AiFillEyeInvisible} from "react-icons/fa";
 
-
-
-export const MovieControls = ({ type, movieId } : {type: string, movieId: number}) => {
-  // const {
-  //   removeMovieFromWatchlist,
-  //   addMovieToWatched,
-  //   moveToWatchlist,
-  //   removeFromWatched,
-  // } = useContext(GlobalContext);
+export const MovieControls = ({
+  type,
+  movieId,
+}: {
+  type: string;
+  movieId: number;
+}) => {
   // const auth = useAuth();
+  const dispatch = useDispatch();
+
+const handleAddMovie = (id: number, type: string) => {
+  dispatch(addMovieToWatchlist({ id: id, type: type }));
+};
 
   return (
     <div className="inner-card-controls">
       {type === "watchlist" && (
         <>
-          <button
-            className="ctrl-btn" /* onClick={() => addMovieToWatched(movie)} */
-          >
+          <button className="ctrl-btn">
             <AiOutlineEye />
           </button>
 
@@ -59,11 +62,11 @@ export const MovieControls = ({ type, movieId } : {type: string, movieId: number
       {/* {auth.isLoaded &&
         (auth.user ? ( */}
       <>
-        {type === "topfilms" && (
+        {type === "movie" && (
           <>
             <button
               className="ctrl-btn"
-              // onClick={() => moveToWatchlist(movie)}
+              onClick={() => handleAddMovie(movieId, type)}
             >
               {/* <i className="fa-fw far fa-eye-slash"></i> */}
               <TbEyePlus />
