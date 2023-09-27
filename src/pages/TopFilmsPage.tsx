@@ -39,7 +39,6 @@ export const TopFilmsPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(filmsData)
   return (
     <div className="movie-page">
       <div className="container">

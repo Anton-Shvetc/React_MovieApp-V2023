@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, FieldValues } from "react-hook-form";
 import { TextField, Grid, Container, Button, Typography } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
 import validationSchema from "./validation";
@@ -6,23 +6,6 @@ import api from "../../sevices/api/index";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     padding: theme.spacing(3),
-//   },
-//   buttonSpacing: {
-//     marginLeft: theme.spacing(1),
-//   },
-//   button: {
-//     backgroundColor: "#000000",
-//     "&:hover": {
-//       backgroundColor: "#ffa500",
-//       color: "#000000",
-//     },
-//     // color: "#000000",
-//   },
-// }));
 
 function Registration() {
   // const classes = useStyles();
@@ -38,8 +21,8 @@ function Registration() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (data : any) => {
-    console.log('click')
+  const onSubmit = async (data: FieldValues) => {
+    console.log(data);
     // try {
     //   setIsLoading(true);
     //   await api.auth.registration(data);

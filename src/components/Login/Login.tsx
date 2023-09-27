@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, FieldValues } from "react-hook-form";
 import { TextField, Grid, Container, Button, Typography } from "@mui/material";
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import validationSchema from "./validation";
@@ -6,36 +6,6 @@ import { TextField, Grid, Container, Button, Typography } from "@mui/material";
 // import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-// import { createTheme, ThemeProvider } from "@mui/material";
-// import { makeStyles } from "@mui/styles";
-// import { makeStyles } from "@mui/styles";
-
-// const useStyles = makeStyles((theme : any) => ({
-//   root: {
-//     padding: theme.spacing(3),
-//   },
-//   buttonSpacing: {
-//     marginLeft: theme.spacing(1),
-//   },
-//   button: {
-//     backgroundColor: "#000000",
-//     "&:hover": {
-//       backgroundColor: "#ffa500",
-//       color: "#000000",
-//     },
-//   },
-// }));
-
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: "#000000",
-//     },
-//     secondary: {
-//       main: "#ffa500",
-//     },
-//   },
-// });
 
 function Login() {
   // const classes = useStyles();
@@ -52,29 +22,26 @@ function Login() {
   // });
   const { control, handleSubmit } = useForm();
 
-  const onSubmit = async (data: any) => {
-    // try {
-    //   setIsLoading(true);
-    //   const { data: loginData } = await api.auth.login(data);
-
-    //   auth.setToken(loginData.token);
-    //   auth.setUser(loginData.user);
-    // } catch (err) {
-    //   console.log(err);
-    //   if (e.response.status === 422) {
-    //     Object.keys(e.response.data.errors).forEach((key) => {
-    //       setError(key, {
-    //         type: "manual",
-    //         message: e.response.data.errors[key],
-    //       });
-    //     });
-    //   }
-    // } finally {
-    //   setIsLoading(false);
-    // }
-    try {}
-    catch {}
-    finally {}
+  const onSubmit = async (data: FieldValues): Promise<void> => {
+    try {
+      console.log(data);
+      //   setIsLoading(true);
+      //   const { data: loginData } = await api.auth.login(data);
+      //   auth.setToken(loginData.token);
+      //   auth.setUser(loginData.user);
+    } catch (err) {
+      console.log(err);
+      //   if (e.response.status === 422) {
+      //     Object.keys(e.response.data.errors).forEach((key) => {
+      //       setError(key, {
+      //         type: "manual",
+      //         message: e.response.data.errors[key],
+      //       });
+      //     });
+      // }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
